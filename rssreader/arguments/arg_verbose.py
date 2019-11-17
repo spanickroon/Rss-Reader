@@ -1,9 +1,16 @@
+"""A module which is responsible for the logic of logs"""
+import os
 import logging
 
 
 class AppLogging:
+    """A class that contains methods responsible for logs""""
     @staticmethod
     def _setup_logs(file_path):
+        """
+        Method that configures the log config
+        storage location, output format
+        """
         logging.basicConfig(
                 filename=file_path,
                 filemode="a",
@@ -14,24 +21,17 @@ class AppLogging:
 
     @staticmethod
     def log_setup():
+        """
+        Method that configures the logs and checks
+        whether the application has already been launched
+        """
         file_path = "app_logging.log"
-        try:
-            with open(file_path, "r") as rf:
-                pass
-        except FileNotFoundError:
-            AppLogging._setup_logs(file_path)
+        AppLogging._setup_logs(file_path)
+        if not os.path.getsize(file_path):
             logging.info("First launch of the application")
-        finally:
-            AppLogging._setup_logs(file_path)
 
     @staticmethod
     def show_logs():
-        logs = []
+        """Method that returns all the logs"""
         with open("app_logging.log", "r") as fr:
-            for line in fr:
-                logs.append(line)
-        return ''.join(logs)
-
-    @staticmethod
-    def add_log(message):
-        logging.info(message)
+            return "".join([line for line in fr])

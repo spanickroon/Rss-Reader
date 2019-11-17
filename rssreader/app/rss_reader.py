@@ -1,17 +1,17 @@
+import logging
 from rssreader.arguments import all_args, arg_verbose
 
 
-class RssReader(all_args.Arguments, arg_verbose.AppLogging):
-    def __init__(self):
-        arg_verbose.AppLogging.log_setup()
-
+class RssReader(all_args.Arguments):
     def run(self) -> None:
-        pass
+        logging.info("Run app")
 
 
 def main() -> None:
     try:
+        arg_verbose.AppLogging.log_setup()
         rss_app = RssReader()
         rss_app.run()
     except Exception as e:
+        logging.error(e)
         print(e)
