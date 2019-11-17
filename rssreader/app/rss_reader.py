@@ -1,9 +1,12 @@
-from rssreader.arguments import all_args
+from rssreader.arguments import all_args, arg_verbose
 
 
-class RssReader(all_args.Arguments):
+class RssReader(all_args.Arguments, arg_verbose.AppLogging):
+    def __init__(self):
+        arg_verbose.AppLogging.log_setup()
+
     def run(self) -> None:
-        print(self.args)
+        pass
 
 
 def main() -> None:
