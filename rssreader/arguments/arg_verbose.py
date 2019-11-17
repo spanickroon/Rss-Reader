@@ -6,7 +6,7 @@ import logging
 class AppLogging:
     """A class that contains methods responsible for logs"""
     @staticmethod
-    def _setup_logs(file_path):
+    def _setup_logs(file_path) -> None:
         """
         Method that configures the log config
         storage location, output format
@@ -20,7 +20,7 @@ class AppLogging:
             )
 
     @staticmethod
-    def log_setup():
+    def log_setup() -> None:
         """
         Method that configures the logs and checks
         whether the application has already been launched
@@ -31,7 +31,7 @@ class AppLogging:
             logging.info("First launch of the application")
 
     @staticmethod
-    def show_logs():
+    def show_logs() -> str:
         """Method that returns all the logs"""
         with open("app_logging.log", "r") as fr:
             logging.info("Show logs")

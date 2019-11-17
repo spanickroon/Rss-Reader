@@ -19,7 +19,7 @@ class ThrowingArgumentParser(argparse.ArgumentParser):
     The class that causes exclusion by overloading
     method error() of class ArgumentParser
     """
-    def error(self, message):
+    def error(self, message) -> None:
         """
         Method that throws an exception in response
         to a built-in error of the module argparse
