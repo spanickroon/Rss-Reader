@@ -4,7 +4,7 @@ import logging
 
 
 class AppLogging:
-    """A class that contains methods responsible for logs""""
+    """A class that contains methods responsible for logs"""
     @staticmethod
     def _setup_logs(file_path):
         """
@@ -34,4 +34,5 @@ class AppLogging:
     def show_logs():
         """Method that returns all the logs"""
         with open("app_logging.log", "r") as fr:
+            logging.info("Show logs")
             return "".join([line for line in fr])
