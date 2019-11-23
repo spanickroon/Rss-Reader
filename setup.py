@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 from rssreader import cnf
 
 setup(
@@ -9,10 +9,10 @@ setup(
                     from various news portals",
     author="Nikita Koznev",
     author_email="nikitakoznev@gmail.com",
-    packages=[cnf.__package__],
+    packages=find_packages(),
     python_requires='>=3.8',
     entry_points={
         'console_scripts':
-            [f'rss-reader = {cnf.__package__}.__main__:main']
+            [f'rss-reader = rssreader.__main__:main']
         }
 )
