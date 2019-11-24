@@ -1,4 +1,5 @@
 """A module which is responsible for the logic of logs"""
+
 import os
 import logging
 
@@ -6,7 +7,7 @@ import logging
 class AppLogging:
     """A class that contains methods responsible for logs"""
     @staticmethod
-    def _setup_logs(file_path) -> None:
+    def setup_logs(file_path) -> None:
         """
         Method that configures the log config
         storage location, output format
@@ -26,7 +27,8 @@ class AppLogging:
         whether the application has already been launched
         """
         file_path = "app_logging.log"
-        AppLogging._setup_logs(file_path)
+
+        AppLogging.setup_logs(file_path)
         if not os.path.getsize(file_path):
             logging.info("First launch of the application")
 

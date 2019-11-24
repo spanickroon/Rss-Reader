@@ -1,0 +1,20 @@
+{
+    "feed": "title feed",
+    "title": "title",
+    "data": "publication date news",
+    "link": "news link",
+    "links": [
+        {
+            "rel": "relationship between links",
+            "type": "link type",
+            "href": "link" 
+        }
+    ],
+    "description": "news description",
+    "title_detail": {
+        "type": "title format",
+        "language": "anguage in which the news is written",
+        "base": "source link",
+        "value": "brief description of news"
+    }
+}

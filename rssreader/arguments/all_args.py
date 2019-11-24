@@ -1,37 +1,15 @@
 """A module that sets command line arguments"""
+
 import argparse
 from rssreader import cnf
-
-
-class ArgumentParserError(Exception):
-    """The exception class
-
-    The exception that is thrown when
-    the arguments are entered incorrectly
-
-    """
-    def __init__(self, message):
-        self.message = message
-
-
-class ThrowingArgumentParser(argparse.ArgumentParser):
-    """
-    The class that causes exclusion by overloading
-    method error() of class ArgumentParser
-    """
-    def error(self, message) -> None:
-        """
-        Method that throws an exception in response
-        to a built-in error of the module argparse
-        """
-        raise ArgumentParserError(message)
+from rssreader.exceptions.all_exceptions import ThrowingArgumentParser
 
 
 class Arguments:
     """A class that sets command line arguments"""
-    def __init__(self):
+    def __init__(self) -> None:
         parser = ThrowingArgumentParser(
-            prog="rss_reader",
+            prog=cnf.__package__,
             description="Pure Python command-line RSS reader."
         )
         parser.add_argument(

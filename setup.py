@@ -11,8 +11,9 @@ setup(
     author_email="nikitakoznev@gmail.com",
     packages=find_packages(),
     python_requires='>=3.8',
+    install_requires=['bs4', 'feedparser'],
     entry_points={
         'console_scripts':
-            [f'rss-reader = rssreader.__main__:main']
+            [f'{cnf.__package__} = rssreader.__main__:main']
         }
 )

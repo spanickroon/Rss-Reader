@@ -1,2 +1,2 @@
-__package__ = "rssreader"
-__version__ = "1.0"
+__package__ = "rss-reader"
+__version__ = "2.1"
