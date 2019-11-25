@@ -1,6 +1,7 @@
 """Entry point module"""
 
 import logging
+
 from rssreader.arguments import all_args, arg_verbose
 from rssreader.parser import feed_parser
 from rssreader.format_conversion import conversion_json as cv_json
@@ -24,7 +25,7 @@ class RssReader(all_args.Arguments):
         else:
             logging.info(f"Get rss from {source}")
             feed = feed_parser.RssParser(source, limit)
-            return feed.make_pretty_rss()
+            return feed.make_pretty_rss(feed.parse_news())
 
     def run(self) -> None:
         """Application launch"""

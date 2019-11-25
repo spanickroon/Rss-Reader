@@ -36,3 +36,14 @@ class InvalidLinkOrInternetConnectionError(Exception):
     """
     def __init__(self, message):
         self.message = message
+
+
+class ParsingNewsError(Exception):
+    """The exception class
+
+    An exception that is thrown when it is not possible
+    to receive news from rss
+
+    """
+    def __init__(self, message):
+        self.message = message

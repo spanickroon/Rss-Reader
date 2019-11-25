@@ -2,6 +2,7 @@
 
 import feedparser
 from bs4 import BeautifulSoup
+
 from rssreader.exceptions import all_exceptions
 
 
@@ -22,16 +23,16 @@ class RssParser:
         """A property that checks for a negative value"""
         self.__limit = value if value is None or value > 0 else 0
 
-    def _check_limit(self) -> int:
+    def _check_limit(self, enrtries: list) -> int:
         """Function that checks the maximum limit value"""
-        self.count_news = len(self.html_news.entries)
+        self.count_news = len(enrtries)
 
         if self.limit is not None:
             return min(self.limit, self.count_news)
         else:
             return self.count_news
 
-    def _check_connection_and_getting_rss(self) -> dict:
+    def _get_rss_from_url(self) -> dict:
         """
         Function that checks the possibility of receiving news and,
         if successful, receives them
@@ -44,30 +45,33 @@ class RssParser:
 
         return html_news
 
-    def __parse_news(self) -> list:
+    def parse_news(self) -> list:
         """
         Function that returns a list of news that was received by parsing rss
         """
-        self.html_news = self._check_connection_and_getting_rss()
-        self.limit = self._check_limit()
+        self.html_news = self._get_rss_from_url()
+        self.limit = self._check_limit(self.html_news.entries)
 
         parsing_news = []
-        feed = self.html_news.feed.title
+        try:
+            feed = self.html_news.feed.title
 
-        for entry in self.html_news.entries[:self.limit]:
-            temp_dict = {
-                'Feed': feed,
-                'Title': entry.title.replace("&#39;", "'"),
-                'Data': entry.published,
-                'Link': entry.link,
-                'Description': BeautifulSoup(
-                    entry.summary, features="html.parser"
-                    ).text,
-                'Links': [link["url"] for link in entry.media_content]
-            }
-            parsing_news.append(temp_dict)
+            for entry in self.html_news.entries[:self.limit]:
+                temp_dict = {
+                    'Feed': feed,
+                    'Title': entry.title.replace("&#39;", "'"),
+                    'Data': entry.published,
+                    'Link': entry.link,
+                    'Description': BeautifulSoup(
+                        entry.summary, features="html.parser"
+                        ).text,
+                    'Links': [link["url"] for link in entry.media_content]
+                }
+                parsing_news.append(temp_dict)
 
-        return parsing_news
+            return parsing_news
+        except AttributeError:
+            raise all_exceptions.ParsingNewsError("Сan't get rss")
 
     def __find_type_link(self, link) -> str:
         """
@@ -85,19 +89,19 @@ class RssParser:
 
         if isinstance(link, list):
             len_list = len(link)
-            for iter in enumerate(link):
-                if iter[1]:
-                    links_list.append(f"[{(iter[0] + 1)}]: {iter[1]}(link)")
+            for index, element in enumerate(link):
+                if element:
+                    links_list.append(f"[{(index + 1)}]: {element}(link)")
         elif link:
             len_list = 1
             links_list.append(f"[1]: {link}(link)")
 
         if isinstance(links, list):
-            for iter in enumerate(links):
-                if iter[1]:
-                    type_link = self.__find_type_link(iter[1])
+            for index, element in enumerate(links):
+                if element:
+                    type_link = self.__find_type_link(element)
                     links_list.append(
-                        f"[{(iter[0]+1+len_list)}]: {iter[1]}{type_link}"
+                        f"[{(index+1+len_list)}]: {element}{type_link}"
                         )
         elif links:
             type_link = self.__find_type_link(links)
@@ -105,12 +109,11 @@ class RssParser:
 
         return "\n".join(links_list)
 
-    def make_pretty_rss(self) -> str:
+    def make_pretty_rss(self, news) -> str:
         """
         Function that returns the final representation
         of news that was obtained from the rss link
         """
-        news = self.__parse_news()
         pretty_string = []
 
         for article in news:

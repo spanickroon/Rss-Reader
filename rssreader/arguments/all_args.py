@@ -1,6 +1,7 @@
 """A module that sets command line arguments"""
 
 import argparse
+
 from rssreader import cnf
 from rssreader.exceptions.all_exceptions import ThrowingArgumentParser
 

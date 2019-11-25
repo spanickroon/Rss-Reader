@@ -1,4 +1,4 @@
 # RSS reader by Nikita Koznev
-RSS reader should be a command-line utility which receives RSS URL and prints results in human-readable format.
+An RSS reader is a command-line utility that retrieves the RSS URL and prints the results in a human-readable format.
 
 ## Look at files in rssreader/documentation before installation

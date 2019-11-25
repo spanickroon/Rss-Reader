@@ -1,5 +1,5 @@
 # RSS reader
-RSS reader should be a command-line utility which receives RSS URL and prints results in human-readable format.
+RSS reader is a command-line utility that retrieves the RSS URL and prints the results in a human-readable format.
 
 ## Distribution
 The program is located in module rssreader. When unpacking, it is installed in the system. After installation, to start using the program, write rss-reader to the terminal.
