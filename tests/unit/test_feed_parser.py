@@ -43,7 +43,7 @@ class RssParserTestCase(unittest.TestCase):
             self.assertEqual(test_feed._check_limit(enrtries), answer)
 
     def test__get_rss_from_url(self):
-        """Function _get_rss_from_url"""
+        """Function _get_rss_from_url test"""
         with open(path.join(
                 "tests",
                 "unit",
@@ -62,7 +62,7 @@ class RssParserTestCase(unittest.TestCase):
             )
 
     def test___find_type_link(self):
-        """Function __find_type_link"""
+        """Function __find_type_link test"""
         with open(path.join(
                 "tests",
                 "unit",
@@ -105,7 +105,7 @@ class RssParserTestCase(unittest.TestCase):
 
     @patch("rssreader.parser.feed_parser.RssParser._RssParser__find_type_link")
     def test___make_pretty_links(self, type_link_mock):
-        """Function __make_pretty_links
+        """Function __make_pretty_links test
 
         self.__find_type_link(element) = (test)
 

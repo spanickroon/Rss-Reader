@@ -1,16 +1,14 @@
 """Tests for rssreader.format_conversion.conversion_json module"""
 
 import unittest
-import feedparser
-from unittest.mock import patch
 from os import path
 
 
 from rssreader.format_conversion import conversion_json
-from rssreader.exceptions import all_exceptions
 
 
 class JsonConversionTestCase(unittest.TestCase):
+    """Test cases for JsonConversion class"""
     def setUp(self):
         with open(
                 path.join("tests", "unit", "data", "test_correct.rss"),
@@ -20,6 +18,7 @@ class JsonConversionTestCase(unittest.TestCase):
         self.test_feed_json = conversion_json.JsonConversion(self.url, 1)
 
     def test_convert_to_json(self):
+        """Function test_convert_to_json test"""
         with open(path.join(
                 "tests",
                 "unit",
