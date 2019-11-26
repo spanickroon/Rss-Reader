@@ -9,7 +9,7 @@ def get_path_to_long_description(file_name):
 
     with open(
         path.join(this_directory, "rssreader", "documentation", file_name),
-        encoding='utf-8'
+        encoding="utf-8"
             ) as f:
         long_description = f.read()
 
@@ -25,10 +25,10 @@ setup(
     author="Nikita Koznev",
     author_email="nikitakoznev@gmail.com",
     packages=find_packages(),
-    python_requires='>=3.8',
-    install_requires=['bs4', 'feedparser'],
+    python_requires=">=3.8",
+    install_requires=["bs4", "feedparser", "nose"],
     entry_points={
-        'console_scripts':
-            [f'{cnf.__package__} = rssreader.__main__:main']
+        "console_scripts":
+            [f"{cnf.__package__} = rssreader.__main__:main"]
         }
 )

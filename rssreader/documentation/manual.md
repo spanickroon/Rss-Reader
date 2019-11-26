@@ -22,3 +22,15 @@ The program works with command line arguments. Their description:
 + Additional description:
     + --limit => can be used with --json.
     + --json => the description of the circuit is in the file **parsing_json_schema.json**
+
+## Testing
+Test find in the most important folder.
+
+To test the package enter the command:
+```bash
+    nosetests --with-coverage --cover-erase --cover-package=rssreader
+```
+You can test internal packages as well: 
+```bash
+    --cover-package=rssreader.parser
+```

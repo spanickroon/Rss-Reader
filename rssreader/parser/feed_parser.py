@@ -65,7 +65,9 @@ class RssParser:
                     'Description': BeautifulSoup(
                         entry.summary, features="html.parser"
                         ).text,
-                    'Links': [link["url"] for link in entry.media_content]
+                    'Links': [link.get("src") for link in BeautifulSoup(
+                        entry.summary, features="html.parser"
+                        ).find_all("img") if link.get("src")]
                 }
                 parsing_news.append(temp_dict)
 
