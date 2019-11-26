@@ -1,7 +1,6 @@
 """Conversion module to json"""
 
 import json
-from bs4 import BeautifulSoup
 
 from rssreader.parser import feed_parser
 from rssreader.exceptions import all_exceptions

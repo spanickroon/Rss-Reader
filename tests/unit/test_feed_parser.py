@@ -14,7 +14,7 @@ class RssParserTestCase(unittest.TestCase):
     def setUp(self):
         with open(
                 path.join("tests", "unit", "data", "test_correct.rss"),
-                'r') as rf:
+                "r") as rf:
             self.url = rf.read()
 
         self.test_feed = feed_parser.RssParser(self.url, 1)
@@ -23,7 +23,7 @@ class RssParserTestCase(unittest.TestCase):
                 "tests",
                 "unit",
                 "data",
-                "test_result_of_parsing_rss.txt"), 'r') as rf:
+                "test_result_of_parsing_rss.txt"), "r") as rf:
             self.test_result_rss = rf.read()
 
     def test__check_limit(self):
@@ -35,7 +35,7 @@ class RssParserTestCase(unittest.TestCase):
                 "tests",
                 "unit",
                 "data",
-                "test_entries.txt"), 'r') as rf:
+                "test_entries.txt"), "r") as rf:
             enrtries = rf.readlines()
 
         for test_value, answer in zip(test_list, answer_list):
@@ -48,7 +48,7 @@ class RssParserTestCase(unittest.TestCase):
                 "tests",
                 "unit",
                 "data",
-                "test_incorrect.rss"), 'r') as rf:
+                "test_incorrect.rss"), "r") as rf:
             incorrect_rss = rf.read()
 
         self.assertEqual(
@@ -67,7 +67,7 @@ class RssParserTestCase(unittest.TestCase):
                 "tests",
                 "unit",
                 "data",
-                "test_links.txt"), 'r') as rf_links:
+                "test_links.txt"), "r") as rf_links:
             list_links = rf_links.readlines()
 
         list_answer = [
@@ -98,7 +98,7 @@ class RssParserTestCase(unittest.TestCase):
                 "tests",
                 "unit",
                 "data",
-                "test_parsing_news.txt"), 'r') as rf:
+                "test_parsing_news.txt"), "r") as rf:
             test_parsing_news = rf.read()
 
         self.assertEqual(str(self.test_feed.parse_news()), test_parsing_news)
@@ -117,7 +117,7 @@ class RssParserTestCase(unittest.TestCase):
                 "tests",
                 "unit",
                 "data",
-                "test_links.txt"), 'r') as rf_links:
+                "test_links.txt"), "r") as rf_links:
             links = rf_links.readlines()
         links = [link.rstrip() for link in links]
 
@@ -125,7 +125,7 @@ class RssParserTestCase(unittest.TestCase):
                 "tests",
                 "unit",
                 "data",
-                "test_answer_links.txt"), 'r') as rf_links:
+                "test_answer_links.txt"), "r") as rf_links:
             answer = rf_links.read()
 
         self.assertEqual(
@@ -150,7 +150,7 @@ class RssParserTestCase(unittest.TestCase):
                 "tests",
                 "unit",
                 "data",
-                "test_pretty_rss.txt"), 'r') as rf:
+                "test_pretty_rss.txt"), "r") as rf:
             answer = rf.read()
 
         self.assertEqual(
