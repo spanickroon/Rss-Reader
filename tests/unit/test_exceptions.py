@@ -1,4 +1,4 @@
-"""Tests for rssreader.format_conversion.conversion_json module"""
+"""Tests for rssreader.exceptions.all_exceptions module"""
 
 import unittest
 

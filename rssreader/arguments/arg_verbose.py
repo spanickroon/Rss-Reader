@@ -17,7 +17,7 @@ class AppLogging:
                 filemode="a",
                 format="%(asctime)s - %(levelname)s - %(message)s",
                 datefmt='%Y-%m-%d %H:%M:%S',
-                level=logging.INFO
+                level=logging.DEBUG
             )
 
     @staticmethod
@@ -28,13 +28,12 @@ class AppLogging:
         """
         file_path = "app_logging.log"
 
-        AppLogging.setup_logs(file_path)
-        if not os.path.getsize(file_path):
-            logging.info("First launch of the application")
+        with open("app_logging.log", "w") as wf:
+            AppLogging.setup_logs(file_path)
 
     @staticmethod
     def show_logs() -> str:
         """Method that returns all the logs"""
-        with open("app_logging.log", "r") as fr:
+        with open("app_logging.log", "r") as rf:
             logging.info("Show logs")
-            return "".join([line for line in fr])
+            return "Logs:\n" + "".join([line for line in rf])

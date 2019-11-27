@@ -1,6 +1,7 @@
 """Conversion module to json"""
 
 import json
+import logging
 
 from rssreader.parser import feed_parser
 from rssreader.exceptions import all_exceptions
@@ -13,4 +14,6 @@ class JsonConversion(feed_parser.RssParser):
 
     def convert_to_json(self) -> str:
         """Method that converts rss to json"""
-        return json.dumps(super().parse_news(), indent=4, ensure_ascii=False)
+        result = json.dumps(super().parse_news(), indent=4, ensure_ascii=False)
+        logging.info("Show result of json conversion")
+        return result if result != "[]" else ""

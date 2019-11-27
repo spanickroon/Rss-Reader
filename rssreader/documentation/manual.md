@@ -16,7 +16,7 @@ The program works with command line arguments. Their description:
     + -h, --help => Show help message and exit. Сan be used as a single argument.
     + --version => Print version info. Сan be used as a single argument.
     + --json => Print result as JSON in stdout.
-    + --verbose => Outputs verbose status messages.
+    + --verbose => Outputs verbose status messages. Use with other arguments.
     + --limit LIMIT => Limit news topics if this parameter is provided. LIMIT
 
 + Additional description:

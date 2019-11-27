@@ -2,6 +2,7 @@
 
 import feedparser
 from bs4 import BeautifulSoup
+import logging
 
 from rssreader.exceptions import all_exceptions
 
@@ -51,6 +52,7 @@ class RssParser:
         """
         self.html_news = self._get_rss_from_url()
         self.limit = self._check_limit(self.html_news.entries)
+        logging.debug(f"Limit value converted to {self.limit}")
 
         parsing_news = []
         try:
@@ -72,8 +74,10 @@ class RssParser:
                 parsing_news.append(temp_dict)
 
             return parsing_news
-        except AttributeError:
-            raise all_exceptions.ParsingNewsError("Сan't get rss")
+        except AttributeError as e:
+            logging.error(e)
+            err_msg = "Сan't get rss, because the news has an incorrect format"
+            raise all_exceptions.ParsingNewsError(err_msg)
 
     def __find_type_link(self, link) -> str:
         """
@@ -129,4 +133,5 @@ class RssParser:
                 \nData: {article['Data']}\nLink: {article['Link']} \
                 \n\n{article['Description']}\n\nLinks:\n{links}\n\n"
             )
+        logging.info("Show result of parsing")
         return "".join(pretty_string)

@@ -15,17 +15,26 @@ class RssReader(all_args.Arguments):
         """
         limit = self.args.limit
         source = self.args.source
+        debug_string = "Start with arguments: " +\
+            f"--limit: {limit}, " +\
+            f"--json {self.args.json}, " +\
+            f"--verbose {self.args.verbose}"
 
-        if self.args.verbose:
-            return arg_verbose.AppLogging.show_logs()
+        logging.debug(debug_string)
+        logging.debug(f"URL: {source}")
+        logging.info(f"Get rss from {source}")
+
         if self.args.json:
             logging.info(f"Convert rss from {source} to json")
             feed_json = cv_json.JsonConversion(source, limit)
             return feed_json.convert_to_json()
         else:
-            logging.info(f"Get rss from {source}")
             feed = feed_parser.RssParser(source, limit)
+            logging.info("Show result of parsing")
             return feed.make_pretty_rss(feed.parse_news())
+
+    def get_verbose(self):
+        return arg_verbose.AppLogging.show_logs() if self.args.verbose else ""
 
     def run(self) -> None:
         """Application launch"""
@@ -42,3 +51,5 @@ def main() -> None:
     except Exception as e:
         logging.error(e)
         print(e)
+    finally:
+        print(rss_app.get_verbose())
