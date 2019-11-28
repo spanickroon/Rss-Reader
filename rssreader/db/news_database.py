@@ -8,7 +8,7 @@ from datetime import datetime
 class NewsDatabase():
     """Сlass for cache"""
     def __init__(self, url: str, date: int, limit: int = None) -> None:
-
+        """Creates a database connection and a collection of news"""
         self.client = MongoClient("mongodb://mongo:27017/")
         self.db = self.client.news
         self.collection = self.db.news_received

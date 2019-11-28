@@ -10,7 +10,7 @@ docker run -it -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock python 
 ```bash
 git clone https://github.com/Spanickroon/PythonHomework.git && cd PythonHomework && git branch --track FinalTask remotes/origin/FinalTask && git checkout FinalTask && ls
 ```
-3. Run the docker and docker installation script
+3. Run the docker and docker-compose installation script. If you get an error, then you have problems with the Internet. Restart the command again
 ```bash
 chmod +x install.sh && . install.sh
 ```

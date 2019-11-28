@@ -10,6 +10,7 @@ from rssreader.exceptions import all_exceptions
 class JsonConversion(feed_parser.RssParser):
     """Class that converts rss to json"""
     def __init__(self, url: str, limit=None) -> None:
+        """Сalls the parser constructor to process the limit"""
         super().__init__(url, limit)
 
     def convert_to_json(self, data_parsing) -> str:
