@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  mongo:
+    image: mongo
+    hostname: mongo
+    ports:
+      - 27017:27017
+  app:
+    tty: true
+    container_name: rss-reader
+    stdin_open: true
+    depends_on:
+      - mongo
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
