@@ -9,7 +9,7 @@ class NewsDatabase():
     """Сlass for cache"""
     def __init__(self, url: str, date: int, limit: int = None) -> None:
 
-        self.client = MongoClient("localhost", 27017,)
+        self.client = MongoClient("mongodb://mongo:27017/")
         self.db = self.client.news
         self.collection = self.db.news_received
         self.url = url

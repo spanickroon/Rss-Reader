@@ -6,5 +6,5 @@ WORKDIR /code
 ADD . /code
 ADD requirements.txt code/requirements.txt
 
-RUN pip install .
-ENV PYTHONPATH "${PATHONPATH}:/."
+RUN python3.8 -m pip install --upgrade -r requirements.txt
+ENV PYTHONPATH "${PATHONPATH}:/rss-reader"
