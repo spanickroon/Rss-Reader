@@ -8,18 +8,14 @@ from datetime import datetime
 class NewsDatabase():
     """Сlass for cache"""
     def __init__(self, url: str, date: int, limit: int = None) -> None:
-        try:
-            self.client = MongoClient("localhost", 27017)
-            self.db = self.client.news
-            self.collection = self.db.news_received
-            self.url = url
-            self.date = date
-            self.limit = limit
 
-            logging.debug("Connected to the database")
-        except ConnectionError as e:
-            logging.error(e)
-            logging.error("No database connection")
+        self.client = MongoClient("localhost", 27017,)
+        self.db = self.client.news
+        self.collection = self.db.news_received
+        self.url = url
+        self.date = date
+        self.limit = limit
+        logging.debug("Connected to the database")
 
     def __template_news(self, date: int, current_news: dict) -> dict:
         """Template for news in this format news is stored in the database"""
