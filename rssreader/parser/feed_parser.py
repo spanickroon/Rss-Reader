@@ -52,7 +52,6 @@ class RssParser:
         """
         self.html_news = self._get_rss_from_url()
         self.limit = self._check_limit(self.html_news.entries)
-        logging.debug(f"Limit value converted to {self.limit}")
 
         parsing_news = []
         try:
@@ -62,7 +61,7 @@ class RssParser:
                 temp_dict = {
                     'Feed': feed,
                     'Title': entry.title.replace("&#39;", "'"),
-                    'Data': entry.published,
+                    'Date': entry.published,
                     'Link': entry.link,
                     'Description': BeautifulSoup(
                         entry.summary, features="html.parser"
@@ -130,8 +129,7 @@ class RssParser:
 
             pretty_string.append(
                 f"\nFeed: {article['Feed']}\n\nTitle: {article['Title']} \
-                \nData: {article['Data']}\nLink: {article['Link']} \
+                \nDate: {article['Date']}\nLink: {article['Link']} \
                 \n\n{article['Description']}\n\nLinks:\n{links}\n\n"
             )
-        logging.info("Show result of parsing")
         return "".join(pretty_string)

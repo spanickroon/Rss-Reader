@@ -7,7 +7,7 @@
     "required": [
       "Feed",
       "Title",
-      "Data",
+      "Date",
       "Link",
       "Description",
       "Links"
@@ -33,10 +33,10 @@
         ],
         "pattern": "^(.*)$"
       },
-      "Data": {
+      "Date": {
         "$id": "#/properties/Data",
         "type": "string",
-        "title": "The Data Schema",
+        "title": "The Date Schema",
         "default": "",
         "examples": [
           "Mon, 25 Nov 2019 21:13:00 +0300"

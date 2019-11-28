@@ -17,11 +17,14 @@ The program works with command line arguments. Their description:
     + --version => Print version info. Сan be used as a single argument.
     + --json => Print result as JSON in stdout.
     + --verbose => Outputs verbose status messages. Use with other arguments.
-    + --limit LIMIT => Limit news topics if this parameter is provided. LIMIT
+    + --limit LIMIT => Limit news topics if this parameter is provided LIMIT.
+    + --date DATE => Return cached news from the publication day. Format is YYYYMMDD". **Argument source has the meaning**.
 
 + Additional description:
     + --limit => can be used with --json.
     + --json => the description of the circuit is in the file **parsing_json_schema.json**
+    + --date => can be used with --limit, --json.
+    + --verbose => can be used with all agruments.
 
 ## Testing
 Test find in the most important folder.

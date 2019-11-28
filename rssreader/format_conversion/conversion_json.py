@@ -12,8 +12,8 @@ class JsonConversion(feed_parser.RssParser):
     def __init__(self, url: str, limit=None) -> None:
         super().__init__(url, limit)
 
-    def convert_to_json(self) -> str:
+    def convert_to_json(self, data_parsing) -> str:
         """Method that converts rss to json"""
-        result = json.dumps(super().parse_news(), indent=4, ensure_ascii=False)
+        result = json.dumps(data_parsing, indent=4, ensure_ascii=False)
         logging.info("Show result of json conversion")
         return result if result != "[]" else ""

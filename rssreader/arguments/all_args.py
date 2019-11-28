@@ -35,6 +35,12 @@ class Arguments:
             version=cnf.__version__
         )
         parser.add_argument(
+            "--date",
+            help="Return cached news from the publication day.\
+            Format is YYYYMMDD",
+            type=int
+        )
+        parser.add_argument(
             "source",
             help="RSS URL",
             type=str

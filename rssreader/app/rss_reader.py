@@ -5,6 +5,7 @@ import logging
 from rssreader.arguments import all_args, arg_verbose
 from rssreader.parser import feed_parser
 from rssreader.format_conversion import conversion_json as cv_json
+from rssreader.db import news_database as db
 
 
 class RssReader(all_args.Arguments):
@@ -15,23 +16,50 @@ class RssReader(all_args.Arguments):
         """
         limit = self.args.limit
         source = self.args.source
+        date = self.args.date
         debug_string = "Start with arguments: " +\
             f"--limit: {limit}, " +\
             f"--json {self.args.json}, " +\
-            f"--verbose {self.args.verbose}"
+            f"--verbose {self.args.verbose} " +\
+            f"--date {date}"
 
         logging.debug(debug_string)
         logging.debug(f"URL: {source}")
+
+        feed = feed_parser.RssParser(source, limit)
+        feed_json = cv_json.JsonConversion(source, limit)
+        feed_db = db.NewsDatabase(source, date, limit)
+
+        if limit is not None and limit < 1:
+            msg = "Limit is less than one"
+            logging.info(f"Stop. {msg}")
+            return msg
+
+        if date:
+            news_from_db = feed_db.show_news()
+
+            if news_from_db:
+                if self.args.json:
+                    return feed_json.convert_to_json(news_from_db)
+                else:
+                    return feed.make_pretty_rss(news_from_db)
+            else:
+                msg = f"No news with date {date} and url {source}"
+                logging.info(msg)
+                return msg
+
+        news_parsing = feed.parse_news()
         logging.info(f"Get rss from {source}")
 
         if self.args.json:
             logging.info(f"Convert rss from {source} to json")
-            feed_json = cv_json.JsonConversion(source, limit)
-            return feed_json.convert_to_json()
+            result = feed_json.convert_to_json(news_parsing)
         else:
-            feed = feed_parser.RssParser(source, limit)
             logging.info("Show result of parsing")
-            return feed.make_pretty_rss(feed.parse_news())
+            result = feed.make_pretty_rss(news_parsing)
+
+        feed_db.update_news(news_parsing)
+        return result
 
     def get_verbose(self):
         return arg_verbose.AppLogging.show_logs() if self.args.verbose else ""
@@ -48,8 +76,7 @@ def main() -> None:
         arg_verbose.AppLogging.log_setup()
         rss_app = RssReader()
         print(rss_app.run())
+        print(rss_app.get_verbose())
     except Exception as e:
         logging.error(e)
         print(e)
-    finally:
-        print(rss_app.get_verbose())
