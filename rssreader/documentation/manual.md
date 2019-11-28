@@ -29,6 +29,10 @@ The program works with command line arguments. Their description:
 ## Testing
 Test find in the most important folder.
 
+Write before tests
+```bash
+    pip install .
+```
 To test the package enter the command:
 ```bash
     nosetests --with-coverage --cover-erase --cover-package=rssreader

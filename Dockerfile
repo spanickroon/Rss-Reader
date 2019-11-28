@@ -7,4 +7,4 @@ ADD . /code
 ADD requirements.txt code/requirements.txt
 
 RUN python3.8 -m pip install --upgrade -r requirements.txt
-ENV PYTHONPATH "${PATHONPATH}:/rss-reader"
+ENV PYTHONPATH "${PATHONPATH}:/rssreader"

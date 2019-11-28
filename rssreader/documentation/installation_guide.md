@@ -2,15 +2,25 @@
 RSS reader is a command-line utility that retrieves the RSS URL and prints the results in a human-readable format.
 
 ## Guide
-1. Clone or Download [repository](https://github.com/Spanickroon/PythonHomework)
-2. Go to folder /PythonHomework
-3. **git branch**
-4. There is no branch besides **master**? Then follow this tutorial.
-    + **git branch -a**. Oh and here she is :D. Let's add it.
-    + **git branch --track FinalTask remotes/origin/FinalTask**.
-    + **git checkout FinalTask**.
-    + **git branch**.
-5. I recommend creating a virtual environment. **python3.8 -m venv env**, **source env/bin/activate**.
-6. Let's collect our package **python3.8 setup.py sdist**.
-7. Let's install our package **pip3.8 install dist/rss-reader-2.1.tar.gz**
-8. All is ready. Read **manual**.
+1. Сreate docker container
+```bash
+docker run -it -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock python /bin/bash
+```
+2. Clone [repository](https://github.com/Spanickroon/PythonHomework)
+```bash
+git clone https://github.com/Spanickroon/PythonHomework.git && cd PythonHomework && git branch --track FinalTask remotes/origin/FinalTask && git checkout FinalTask && ls
+```
+3. Run the docker and docker installation script
+```bash
+chmod +x install.sh && . install.sh
+```
+4. To start the application write
+```bash
+docker-compose run app python -m rssreader
+```
+Example:
+```bash
+docker-compose run app python -m rssreader "https://news.yahoo.com/rss" --limit 1
+```
+5. If you want to test the code, see **manual**
+6. All is ready. Read **manual**.
