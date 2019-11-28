@@ -4,4 +4,7 @@ RUN mkdir /code
 
 WORKDIR /code
 ADD . /code
-ENV PYTHONPATH "${PATHONPATH}:/rssreader"
+ADD requirements.txt code/requirements.txt
+
+RUN pip install .
+ENV PYTHONPATH "${PATHONPATH}:/."
