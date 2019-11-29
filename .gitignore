@@ -111,5 +111,4 @@ venv.bak/
 export_path.sh
 
 # files convertion
-*.html
 *.pdf
