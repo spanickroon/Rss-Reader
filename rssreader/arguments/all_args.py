@@ -1,7 +1,5 @@
 """A module that sets command line arguments"""
 
-import argparse
-
 from rssreader import cnf
 from rssreader.exceptions.all_exceptions import ThrowingArgumentParser
 
@@ -39,6 +37,16 @@ class Arguments:
             help="Return cached news from the publication day.\
             Format is YYYYMMDD",
             type=int
+        )
+        parser.add_argument(
+            "--to-html",
+            help="Convert news to html",
+            action="store_true"
+        )
+        parser.add_argument(
+            "--to-pdf",
+            help="Convert news to pdf",
+            action="store_true"
         )
         parser.add_argument(
             "source",

@@ -4,7 +4,6 @@ import json
 import logging
 
 from rssreader.parser import feed_parser
-from rssreader.exceptions import all_exceptions
 
 
 class JsonConversion(feed_parser.RssParser):
