@@ -21,12 +21,14 @@ The program works with command line arguments. Their description:
     + --date DATE => Return cached news from the publication day. Format is YYYYMMDD". **Argument source has the meaning**.
     + --to-html => Convert news to html. Return file parsing_news.hmtl
     + --to-pdf => Convert news to pdf. Return parsing_news.pdf
+    + --colorize => Print the result of the utility in colorized mode.
 
 + Additional description:
     + --limit => can be used with --json, --date, --to-pdf, --to-html.
     + --json => the description of the circuit is in the file **parsing_json_schema.json**
     + --date => can be used with --json, --limit, --to-pdf, --to-html.
     + --verbose => can be used with all agruments.
+    + --colorize => use argument without --json. Because json will not be color.
 
 For example you can use a super combination:
 ```bash

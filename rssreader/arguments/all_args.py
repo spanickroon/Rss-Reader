@@ -49,6 +49,11 @@ class Arguments:
             action="store_true"
         )
         parser.add_argument(
+            "--colorize",
+            help="Convert news to pdf",
+            action="store_true"
+        )
+        parser.add_argument(
             "source",
             help="RSS URL",
             type=str

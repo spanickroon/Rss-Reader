@@ -12,7 +12,7 @@ setup(
     python_requires=">=3.8",
     install_requires=[
         "bs4", "feedparser", "nose", "pymongo", "coverage",
-        "fpdf", "requests"],
+        "fpdf", "requests", "colored"],
     entry_points={
         "console_scripts":
             [f"{cnf.__package__} = rssreader.__main__:main"]

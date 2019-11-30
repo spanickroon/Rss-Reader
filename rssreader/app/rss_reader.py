@@ -21,13 +21,15 @@ class RssReader(all_args.Arguments):
         date = self.args.date
         to_html = self.args.to_html
         to_pdf = self.args.to_pdf
+        colorize = self.args.colorize
         debug_string = "Start with arguments: " +\
             f"--limit: {limit}, " +\
             f"--json {self.args.json}, " +\
             f"--verbose {self.args.verbose}, " +\
             f"--date {date}, " +\
             f"--to-html {to_html}, " +\
-            f"--to-pdf {to_pdf}"
+            f"--to-pdf {to_pdf}, " +\
+            f"--colorize {colorize}"
 
         logging.debug(debug_string)
         logging.debug(f"URL: {source}")
@@ -54,7 +56,10 @@ class RssReader(all_args.Arguments):
                 if self.args.json:
                     return feed_json.convert_to_json(news_from_db)
                 else:
-                    return feed.make_pretty_rss(news_from_db)
+                    if colorize:
+                        return feed.make_pretty_rss_colorize(news_from_db)
+                    else:
+                        return feed.make_pretty_rss(news_from_db)
             else:
                 msg = f"No news with date {date} and url {source}"
                 logging.info(msg)
@@ -68,7 +73,10 @@ class RssReader(all_args.Arguments):
             result = feed_json.convert_to_json(news_parsing)
         else:
             logging.info("Show result of parsing")
-            result = feed.make_pretty_rss(news_parsing)
+            if colorize:
+                result = feed.make_pretty_rss_colorize(news_parsing)
+            else:
+                result = feed.make_pretty_rss(news_parsing)
 
         if to_html and news_parsing:
             feed_html = cv_html.HtmlConversion(news_parsing)
