@@ -19,12 +19,19 @@ The program works with command line arguments. Their description:
     + --verbose => Outputs verbose status messages. Use with other arguments.
     + --limit LIMIT => Limit news topics if this parameter is provided LIMIT.
     + --date DATE => Return cached news from the publication day. Format is YYYYMMDD". **Argument source has the meaning**.
+    + --to-html => Convert news to html. Return file parsing_news.hmtl
+    + --to-pdf => Convert news to pdf. Return parsing_news.pdf
 
 + Additional description:
-    + --limit => can be used with --json.
+    + --limit => can be used with --json, --date, --to-pdf, --to-html.
     + --json => the description of the circuit is in the file **parsing_json_schema.json**
-    + --date => can be used with --limit, --json.
+    + --date => can be used with --json, --limit, --to-pdf, --to-html.
     + --verbose => can be used with all agruments.
+
+For example you can use a super combination:
+```bash
+    source --limit LIMIT --json --date Date --to-pdf --to-html
+```
 
 ## Testing
 Test find in the most important folder.

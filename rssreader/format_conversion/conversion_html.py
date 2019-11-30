@@ -46,8 +46,8 @@ class HtmlConversion():
 
         return "".join(result_news)
 
-    def save_html_news(self, news):
+    def save_html_news(self, news) -> None:
         """Method that saves html file"""
         with open("parsing_news.html", "w") as wf:
             wf.write(news)
-        logging.info("File saved successfully")
+        logging.info("File html saved successfully")

@@ -111,4 +111,9 @@ venv.bak/
 export_path.sh
 
 # files convertion
+parsing_news.html
 *.pdf
+*.jpg
+
+# file format
+*.pkl

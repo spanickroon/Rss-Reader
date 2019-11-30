@@ -6,6 +6,7 @@ from rssreader.arguments import all_args, arg_verbose
 from rssreader.parser import feed_parser
 from rssreader.format_conversion import conversion_json as cv_json
 from rssreader.format_conversion import conversion_html as cv_html
+from rssreader.format_conversion import conversion_pdf as cv_pdf
 from rssreader.db import news_database as db
 
 
@@ -47,7 +48,9 @@ class RssReader(all_args.Arguments):
                 if to_html and news_from_db:
                     feed_html = cv_html.HtmlConversion(news_from_db)
                     feed_html.save_html_news(feed_html.conversion_to_html())
-
+                if to_pdf and news_from_db:
+                    feed_pdf = cv_pdf.PdfConversion(news_from_db)
+                    feed_pdf.conversion_to_pdf()
                 if self.args.json:
                     return feed_json.convert_to_json(news_from_db)
                 else:
@@ -70,6 +73,10 @@ class RssReader(all_args.Arguments):
         if to_html and news_parsing:
             feed_html = cv_html.HtmlConversion(news_parsing)
             feed_html.save_html_news(feed_html.conversion_to_html())
+
+        if to_pdf and news_parsing:
+            feed_pdf = cv_pdf.PdfConversion(news_parsing)
+            feed_pdf.conversion_to_pdf()
 
         feed_db.update_news(news_parsing)
         return result
