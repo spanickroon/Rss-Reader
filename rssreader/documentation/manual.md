@@ -37,10 +37,19 @@ For example you can use a super combination:
 ## Get files from container
 
 ```bash
-docker cp my_app:/code/parsing_news.pdf parsing_news.pdf && docker cp my_app:/code/parsing_news.html parsing_news.html
+docker cp my_app:/code/parsing_news.pdf parsing_news.pdf
+docker cp my_app:/code/parsing_news.html parsing_news.html
+```
+
+## Database check
+
+Go to your browser at. Only after starting the application at least 1 time
+```bash
+http://0.0.0.0:8081/db/news/news_received
 ```
 
 ## Testing
+
 Test find in the most important folder.
 
 Write before tests

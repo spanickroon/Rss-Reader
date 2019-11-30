@@ -1,2 +1,2 @@
 __package__ = "rss-reader"
-__version__ = "4.0"
+__version__ = "5.0"
