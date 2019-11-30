@@ -70,6 +70,6 @@ class PdfConversion():
 
             self.pdf.add_page()
 
-        logging.info("News converted to html")
+        logging.info("News converted to pdf")
         logging.info("File pdf saved successfully")
         self.pdf.output("parsing_news.pdf")

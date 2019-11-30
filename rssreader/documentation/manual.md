@@ -32,6 +32,11 @@ For example you can use a super combination:
 ```bash
     source --limit LIMIT --json --date Date --to-pdf --to-html
 ```
+## Get files from container
+
+```bash
+docker cp my_app:/code/parsing_news.pdf parsing_news.pdf && docker cp my_app:/code/parsing_news.html parsing_news.html
+```
 
 ## Testing
 Test find in the most important folder.
