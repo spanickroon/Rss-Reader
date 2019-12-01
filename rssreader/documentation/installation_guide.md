@@ -20,7 +20,7 @@ docker rm my_app |& docker-compose run --name my_app app python -m rssreader
 ```
 Example:
 ```bash
-docker rm my_app |& docker-compose run app python -m rssreader "https://news.yahoo.com/rss" --limit 1
+docker rm my_app |& docker-compose run --name my_app app python -m rssreader "https://news.yahoo.com/rss" --limit 1
 ```
 5. If you want to test the code, see **manual**
 6. If you go get the file pdf or html, see **manual**
