@@ -6,9 +6,9 @@ RSS reader is a command-line utility that retrieves the RSS URL and prints the r
 ```bash
 docker run -it -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock python /bin/bash
 ```
-2. Clone [repository](https://github.com/Spanickroon/PythonHomework)
+2. Clone [repository](https://github.com/spanickroon/Rss-Reader)
 ```bash
-git clone https://github.com/Spanickroon/PythonHomework.git && cd PythonHomework && git branch --track FinalTask remotes/origin/FinalTask && git checkout FinalTask && ls
+git clone https://github.com/spanickroon/Rss-Reader.git && cd Rss-Reader
 ```
 3. Run the docker and docker-compose installation script. If you get an error, then you have problems with the Internet. Restart the command again
 ```bash

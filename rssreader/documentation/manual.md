@@ -7,7 +7,7 @@ The program is located in module rssreader. When unpacking, it is installed in t
 ## Specification
 The program works with command line arguments. Their description:
 
-**usage:** rss-reader \[-h] \[--version] \[--json] \[--verbose] \[--limit *LIMIT*] source
+**usage:** docker rm my_app |& docker-compose run --name my_app app python -m rssreader \[-h] \[--version] \[--json] \[--verbose] \[--limit *LIMIT*] \[--colorize] \[--to-pdf] \[--to-html] \[--date *DATE*] source
 
 + Positionalarguments:
     + source => RSS URL
